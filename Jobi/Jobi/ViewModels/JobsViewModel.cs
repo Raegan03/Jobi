@@ -4,29 +4,23 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
-
 using Jobi.Models;
-using Jobi.Views;
+using Jobi.Helpers;
 
 namespace Jobi.ViewModels
 {
-    public class ItemsViewModel : BaseViewModel
+    public class JobsViewModel : BaseViewModel
     {
-        public ObservableCollection<Item> Items { get; set; }
+        public ObservableCollection<JobItem> JobItems { get; set; }
         public Command LoadItemsCommand { get; set; }
 
-        public ItemsViewModel()
-        {
-            Title = "Browse";
-            Items = new ObservableCollection<Item>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+        private JobsSearchItem
 
-            MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
-            {
-                var newItem = item as Item;
-                Items.Add(newItem);
-                await DataStore.AddItemAsync(newItem);
-            });
+        public JobsViewModel()
+        {
+            Title = "Jobs";
+            JobItems = new ObservableCollection<JobItem>();
+            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
 
         async Task ExecuteLoadItemsCommand()
@@ -35,11 +29,13 @@ namespace Jobi.ViewModels
 
             try
             {
-                Items.Clear();
-                var items = await DataStore.GetItemsAsync(true);
+                var jobsSearchItem = new JobsSearchItem(App.UserDataStore.User);
+                JobItems.Clear();
+
+                var items = await App.ApiHelper.GetJobsAsync(jobsSearchItem);
                 foreach (var item in items)
                 {
-                    Items.Add(item);
+                    JobItems.Add(item);
                 }
             }
             catch (Exception ex)

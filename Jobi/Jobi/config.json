@@ -1,0 +1,8 @@
+﻿{
+	"api_url":"https://jobs.github.com/positions.json?",
+	"api_search":"description={0}",
+	"api_location":"location={0}",
+	"api_full_time":"full_time={0}",
+	"api_lat":"lat={0}",
+	"api_long":"long={0}",
+}

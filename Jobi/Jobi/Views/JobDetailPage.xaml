@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Jobi.Views.JobDetailPage"
+             Title="{Binding Title}">
+
+    <ScrollView>
+        <StackLayout Spacing="20" Padding="15">
+            <Label FontSize="Small">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding Item.Type}"/>
+                        <Span Text=" / "/>
+                        <Span Text="{Binding Item.Location}"/>
+                        <Span Text=" / "/>
+                        <Span Text="{Binding Item.CreatedAt}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Title: " FontSize="Medium" FontAttributes="Bold"/>
+                        <Span Text="{Binding Item.Title}" FontSize="Medium" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Text="{Binding Item.Description}" TextType="Html" d:Text="Item description" FontSize="Small" Margin="0, 10"/>
+            <Label Text="How to apply: " d:Text="Item description" FontSize="Small"/>
+            <Label Text="{Binding Item.HowToApply}" TextType="Html" d:Text="Item description" FontSize="Small"/>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Source: " FontSize="Medium" FontAttributes="Bold"/>
+                        <Span Text="{Binding Item.Company}" FontSize="Medium" TextColor="DarkBlue">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding HyperlinkCommand}"
+                                          CommandParameter="{Binding Item.CompanyUrl}" />
+                            </Span.GestureRecognizers>
+                        </Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Image Source="{Binding Item.CompanyLogo}"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

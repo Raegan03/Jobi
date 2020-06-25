@@ -5,36 +5,35 @@ using System.IO;
 
 namespace Jobi.Helpers
 {
-    public class UserHelper
+    public class UserDataStore
     {
-        public bool IsUserRegistered => _user.Nickname != null;
-        public string UserNickname => _user.Nickname;
+        public bool IsUserRegistered => User.Nickname != null;
+        public User User { get; private set; }
 
-        private User _user;
         private readonly string _userDataPath;
 
-        public UserHelper()
+        public UserDataStore()
         {
             _userDataPath = Path.Combine(Environment.GetFolderPath(
                 Environment.SpecialFolder.LocalApplicationData), "user.json");
 
-            _user = new User();
+            User = new User();
             if(File.Exists(_userDataPath))
             {
                 var userJson = File.ReadAllText(_userDataPath);
-                _user = JsonConvert.DeserializeObject<User>(userJson);
+                User = JsonConvert.DeserializeObject<User>(userJson);
             }
         }
 
         public void RegisterUser(User user)
         {
-            _user = user;
+            User = user;
             SaveUser();
         }
 
         private void SaveUser()
         {
-            var userJson = JsonConvert.SerializeObject(_user);
+            var userJson = JsonConvert.SerializeObject(User);
             File.WriteAllText(_userDataPath, userJson);
         }
     }

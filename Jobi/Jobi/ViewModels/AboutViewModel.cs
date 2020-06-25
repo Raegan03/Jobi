@@ -9,8 +9,8 @@ namespace Jobi.ViewModels
     {
         public AboutViewModel()
         {
-            Title = "About";
-            OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://xamarin.com"));
+            Title = "About Jobi";
+            OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://jobs.github.com/positions)"));
         }
 
         public ICommand OpenWebCommand { get; }

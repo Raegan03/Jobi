@@ -12,37 +12,31 @@ using Xamarin.Forms.Xaml;
 namespace Jobi.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RegisterPage : ContentPage
+    public partial class JobsSearchPage : ContentPage
     {
-        public User User { get; set; }
+        public JobsSearchItem JobSearchItem { get; set; }
 
-        public RegisterPage()
+        public JobsSearchPage()
         {
             InitializeComponent();
 
-            User = new User();
+            JobSearchItem = new JobsSearchItem(App.UserDataStore.User);
             BindingContext = this;
         }
 
-        private async void RegisterButton_Clicked(object sender, EventArgs e)
+        private async void SearchButton_Clicked(object sender, EventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(User.Nickname))
-            {
-                await DisplayAlert("No nickname provided!", "You need to provide nickname to continue.", "OK");
-                return;
-            }
-            else if (string.IsNullOrWhiteSpace(User.SearchTerms))
+            if (string.IsNullOrWhiteSpace(JobSearchItem.SearchTerms))
             {
                 await DisplayAlert("No search terms provided!", "You need to provide search terms to continue.", "OK");
                 return;
             }
-            else if (string.IsNullOrWhiteSpace(User.Location))
+            else if (string.IsNullOrWhiteSpace(JobSearchItem.Location))
             {
                 await DisplayAlert("No location provided!", "You need to provide location to continue.", "OK");
                 return;
             }
 
-            App.UserDataStore.RegisterUser(User);
             await Navigation.PopModalAsync();
         }
     }

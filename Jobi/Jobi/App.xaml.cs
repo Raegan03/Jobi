@@ -7,15 +7,16 @@ namespace Jobi
 {
     public partial class App : Application
     {
-        public static UserHelper UserHelper { get; private set; }
+        public static ApiHelper ApiHelper;
+        public static UserDataStore UserDataStore;
 
         public App()
         {
+            ApiHelper = new ApiHelper();
+            UserDataStore = new UserDataStore();
+
             InitializeComponent();
 
-            UserHelper = new UserHelper();
-
-            DependencyService.Register<MockDataStore>();
             MainPage = new MainPage();
         }
 
