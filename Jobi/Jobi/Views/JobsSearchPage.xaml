@@ -46,7 +46,7 @@
             </Grid.ColumnDefinitions>
             
             <Label Grid.Column="0" Grid.Row="1" Text="Search terms" Style="{StaticResource RegisterLabel}" />
-            <Entry Grid.Column="1" Grid.Row="1" Text="{Binding User.SearchTerm}" d:Text="Default search terms" 
+            <Entry Grid.Column="1" Grid.Row="1" Text="{Binding JobSearchItem.SearchTerms}" d:Text="Default search terms" 
                    Style="{StaticResource RegisterEntry}" MaxLength="30"/>
 
             <Grid Grid.ColumnSpan="2" Grid.Row="2">
@@ -57,12 +57,12 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Grid.Column="0" Text="Search for full-time jobs?" Style="{StaticResource RegisterLabel}" />
-                <CheckBox Grid.Column="1" IsChecked="{Binding User.FullTime}" HorizontalOptions="End"/>
+                <CheckBox Grid.Column="1" IsChecked="{Binding JobSearchItem.FullTime}" HorizontalOptions="End"/>
                 <Label Grid.Column="2" Text="Full-time" Style="{StaticResource CheckboxLabel}" />
             </Grid>
 
             <Label Grid.Column="0" Grid.Row="3" Text="Location" Style="{StaticResource RegisterLabel}" />
-            <Entry Grid.Column="1" Grid.Row="3" Text="{Binding User.Location}" d:Text="City or zip code" 
+            <Entry Grid.Column="1" Grid.Row="3" Text="{Binding JobSearchItem.Location}" d:Text="City or zip code" 
                    Style="{StaticResource RegisterEntry}" MaxLength="30"/>
 
             <Label Grid.ColumnSpan="2" Grid.Row="4" Text="or" Style="{StaticResource RegisterLabel}" />

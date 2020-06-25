@@ -9,11 +9,13 @@ namespace Jobi
     {
         public static ApiHelper ApiHelper;
         public static UserDataStore UserDataStore;
+        public static JobsDataStore JobsDataStore;
 
         public App()
         {
             ApiHelper = new ApiHelper();
             UserDataStore = new UserDataStore();
+            JobsDataStore = new JobsDataStore();
 
             InitializeComponent();
 

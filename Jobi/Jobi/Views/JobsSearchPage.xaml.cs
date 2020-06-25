@@ -1,10 +1,5 @@
-﻿using Jobi.Helpers;
-using Jobi.Models;
+﻿using Jobi.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -16,11 +11,11 @@ namespace Jobi.Views
     {
         public JobsSearchItem JobSearchItem { get; set; }
 
-        public JobsSearchPage()
+        public JobsSearchPage(JobsSearchItem jobsSearchItem)
         {
             InitializeComponent();
 
-            JobSearchItem = new JobsSearchItem(App.UserDataStore.User);
+            JobSearchItem = jobsSearchItem;
             BindingContext = this;
         }
 
@@ -38,6 +33,7 @@ namespace Jobi.Views
             }
 
             await Navigation.PopModalAsync();
+            MessagingCenter.Send(JobSearchItem, "Search");
         }
     }
 }

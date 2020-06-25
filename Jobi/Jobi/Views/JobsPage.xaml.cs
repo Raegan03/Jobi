@@ -25,7 +25,8 @@ namespace Jobi.Views
 
             if (!App.UserDataStore.IsUserRegistered) 
             {
-                Task.Run(async () => await Navigation.PushModalAsync(new NavigationPage(new JobsSearchPage()))).Wait();
+                Task.Run(async () => await Navigation.PushModalAsync(
+                    new NavigationPage(new RegisterPage()))).Wait();
             }
         }
 
@@ -46,8 +47,8 @@ namespace Jobi.Views
 
         private async void ToolbarItem_Clicked(object sender, EventArgs e)
         {
-            var jobsPage = new JobsSearchPage();
-            await Navigation.PushAsync(new NavigationPage(jobsPage));
+            await Navigation.PushModalAsync(new NavigationPage(
+                new JobsSearchPage(viewModel.CurrentSearchItem)));
         }
     }
 }

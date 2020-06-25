@@ -51,7 +51,7 @@
                    Style="{StaticResource RegisterEntry}" MaxLength="15"/>
 
             <Label Grid.Column="0" Grid.Row="1" Text="Search terms" Style="{StaticResource RegisterLabel}" />
-            <Entry Grid.Column="1" Grid.Row="1" Text="{Binding User.SearchTerm}" d:Text="Default search terms" 
+            <Entry Grid.Column="1" Grid.Row="1" Text="{Binding User.SearchTerms}" d:Text="Default search terms" 
                    Style="{StaticResource RegisterEntry}" MaxLength="30"/>
 
             <Grid Grid.ColumnSpan="2" Grid.Row="2">
