@@ -46,6 +46,8 @@
                 <RowDefinition Height="50" />
                 <RowDefinition Height="50" />
                 <RowDefinition Height="50" />
+                <RowDefinition Height="25" />
+                <RowDefinition Height="50" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100"/>
@@ -96,6 +98,11 @@
 
             <Button Grid.ColumnSpan="2" Grid.Row="7" Text="Search" HorizontalOptions="FillAndExpand" 
                     BackgroundColor="{StaticResource ButtonsBackground}" TextColor="White" Command="{Binding SearchCommand}"/>
+
+            <Label Grid.ColumnSpan="2" Grid.Row="8" Text="or" Style="{StaticResource RegisterLabel}" />
+
+            <Button Grid.ColumnSpan="2" Grid.Row="9" Text="Default Search" HorizontalOptions="FillAndExpand" 
+                    BackgroundColor="{StaticResource ButtonsBackground}" TextColor="White" Command="{Binding DefaultSearchCommand}"/>
         </Grid>
     </ScrollView>
     

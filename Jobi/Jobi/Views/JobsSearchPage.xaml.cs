@@ -13,6 +13,8 @@ namespace Jobi.Views
         {
             InitializeComponent();
 
+            jobsSearchItem.UseGeolocation = false;
+
             var viewModel = new JobsSearchViewModel(this, Navigation, jobsSearchItem);
             BindingContext = viewModel;
         }

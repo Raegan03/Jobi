@@ -1,11 +1,14 @@
 ﻿using Jobi.Helpers;
 using Jobi.Models;
 using Jobi.Services;
+using Jobi.Views;
 using System;
+using System.Linq;
 using System.Windows.Input;
 
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace Jobi.ViewModels
 {
@@ -73,6 +76,9 @@ namespace Jobi.ViewModels
 
             App.UserDataStore.RegisterUser(User);
             await navigation.PopModalAsync();
+
+            var mainPage = Application.Current.MainPage as TabbedPage;
+            mainPage.CurrentPage = mainPage.Children[0];
 
             MessagingCenter.Send(User, MessagingHelper.RegisteredMessage);
         }

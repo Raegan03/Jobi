@@ -41,6 +41,7 @@ namespace Jobi.ViewModels
         }
 
         public ICommand SearchCommand { get; }
+        public ICommand DefaultSearchCommand { get; }
         public ICommand GeolocationCommand { get; }
         public ICommand BackCommand { get; }
 
@@ -49,9 +50,16 @@ namespace Jobi.ViewModels
         {
             JobSearchItem = jobsSearchItem;
 
+            DefaultSearchCommand = new Command(DefaultSearchButtonCommand);
             SearchCommand = new Command(SearchButtonCommand);
             GeolocationCommand = new Command(GeolocationButtonCommand);
             BackCommand = new Command(BackButtonCommand);
+        }
+
+        private async void DefaultSearchButtonCommand()
+        {
+            await navigation.PopModalAsync();
+            MessagingCenter.Send(new JobsSearchItem(App.UserDataStore.User), MessagingHelper.SearchMessage);
         }
 
         private async void SearchButtonCommand()
