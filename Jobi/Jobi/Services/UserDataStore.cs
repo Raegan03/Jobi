@@ -31,6 +31,12 @@ namespace Jobi.Helpers
             SaveUser();
         }
 
+        public void FlushUser()
+        {
+            User = new User();
+            SaveUser();
+        }
+
         private void SaveUser()
         {
             var userJson = JsonConvert.SerializeObject(User);

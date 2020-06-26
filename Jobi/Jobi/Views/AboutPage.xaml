@@ -9,9 +9,6 @@
              Title="{Binding Title}"
              BackgroundColor="{StaticResource MelonBackgroundColor}">
 
-    <ContentPage.BindingContext>
-        <vm:AboutViewModel />
-    </ContentPage.BindingContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -46,6 +43,8 @@
                         Command="{Binding OpenWebCommand}"
                         BackgroundColor="{StaticResource ButtonsBackground}"
                         TextColor="White" />
+                <Button Text="Flush user data" HorizontalOptions="FillAndExpand" 
+                    BackgroundColor="{StaticResource ButtonsBackground}" Command="{Binding FlushUserCommand}" TextColor="White" />
             </StackLayout>
         </ScrollView>
     </Grid>
