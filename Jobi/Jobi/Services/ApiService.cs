@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Jobi.Helpers
 {
-    public class ApiHelper
+    public class ApiService
     {
         private ApiSettings _apiSettings;
 
-        public ApiHelper()
+        public ApiService()
         {
             var assembly = Assembly.GetExecutingAssembly();
             var resourceName = "Jobi.config.json";

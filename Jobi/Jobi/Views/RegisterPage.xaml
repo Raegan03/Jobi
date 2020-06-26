@@ -32,7 +32,7 @@
     </ContentPage.Resources>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Register" Clicked="RegisterButton_Clicked" />
+        <ToolbarItem Text="Register" Command="{Binding RegisterCommand}" />
     </ContentPage.ToolbarItems>
 
     <ScrollView>
@@ -44,6 +44,8 @@
                 <RowDefinition Height="50" />
                 <RowDefinition Height="25" />
                 <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="30" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100"/>
@@ -51,11 +53,11 @@
             </Grid.ColumnDefinitions>
             
             <Label Grid.Column="0" Grid.Row="0" Text="Nickname" Style="{StaticResource RegisterLabel}" />
-            <Entry Grid.Column="1" Grid.Row="0" Text="{Binding User.Nickname}" d:Text="Nickname" 
+            <Entry Grid.Column="1" Grid.Row="0" Text="{Binding User.Nickname}" Placeholder="Nickname" 
                    Style="{StaticResource RegisterEntry}" MaxLength="15"/>
 
             <Label Grid.Column="0" Grid.Row="1" Text="Search terms" Style="{StaticResource RegisterLabel}" />
-            <Entry Grid.Column="1" Grid.Row="1" Text="{Binding User.SearchTerms}" d:Text="Default search terms" 
+            <Entry Grid.Column="1" Grid.Row="1" Text="{Binding User.SearchTerms}" Placeholder="Default search terms" 
                    Style="{StaticResource RegisterEntry}" MaxLength="30"/>
 
             <Grid Grid.ColumnSpan="2" Grid.Row="2">
@@ -70,14 +72,31 @@
                 <Label Grid.Column="2" Text="Full-time" Style="{StaticResource CheckboxLabel}" />
             </Grid>
 
-            <Label Grid.Column="0" Grid.Row="3" Text="Location" Style="{StaticResource RegisterLabel}" />
-            <Entry Grid.Column="1" Grid.Row="3" Text="{Binding User.Location}" d:Text="City or zip code" 
-                   Style="{StaticResource RegisterEntry}" MaxLength="30"/>
+            <Label Grid.Column="0" Grid.Row="3" Text="Location" Style="{StaticResource RegisterLabel}"  IsVisible="{Binding ShowGeolocationButton}" />
+            <Entry Grid.Column="1" Grid.Row="3" Text="{Binding User.Location}" Placeholder="City or zip code" 
+                   Style="{StaticResource RegisterEntry}" MaxLength="30"  IsVisible="{Binding ShowGeolocationButton}"/>
 
-            <Label Grid.ColumnSpan="2" Grid.Row="4" Text="or" Style="{StaticResource RegisterLabel}" />
+            <Label Grid.ColumnSpan="2" Grid.Row="4" Text="or" Style="{StaticResource RegisterLabel}" IsVisible="{Binding ShowGeolocationButton}" />
 
             <Button Grid.ColumnSpan="2" Grid.Row="5" Text="Use phone geolocation" HorizontalOptions="FillAndExpand" 
-                    BackgroundColor="{StaticResource ButtonsBackground}" TextColor="White"/>
+                    BackgroundColor="{StaticResource ButtonsBackground}" TextColor="White" Command="{Binding GeolocationCommand}" IsVisible="{Binding ShowGeolocationButton}"/>
+
+            <Grid Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="2" IsVisible="{Binding ShowGeolocation}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="0" Grid.Row="0" Text="Latitude" Style="{StaticResource RegisterLabel}" />
+                <Label Grid.Column="1" Grid.Row="0" Text="{Binding LatitudeValue}" Style="{StaticResource RegisterLabel}" />
+
+                <Label Grid.Column="0" Grid.Row="1" Text="Longitude" Style="{StaticResource RegisterLabel}" />
+                <Label Grid.Column="1" Grid.Row="1" Text="{Binding LongitudeValue}" Style="{StaticResource RegisterLabel}" />
+            </Grid>
         </Grid>
     </ScrollView>
     

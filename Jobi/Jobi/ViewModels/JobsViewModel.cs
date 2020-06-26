@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Jobi.Models;
+using Jobi.Helpers;
 
 namespace Jobi.ViewModels
 {
@@ -17,19 +18,28 @@ namespace Jobi.ViewModels
 
         public JobsViewModel()
         {
-            Title = "Jobs";
+            Title = string.Format("Hello, {0}", App.UserDataStore.IsUserRegistered ? App.UserDataStore.User.Nickname : string.Empty);
             JobItems = new ObservableCollection<JobItem>(App.JobsDataStore.GetItems());
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
             CurrentSearchItem = new JobsSearchItem(App.UserDataStore.User);
-            MessagingCenter.Subscribe<JobsSearchItem>(this, "Search", 
+            MessagingCenter.Subscribe<JobsSearchItem>(this, MessagingHelper.SearchMessage,
                 async (x) => await UpdateSearchItem(x));
+
+            MessagingCenter.Subscribe<User>(this, MessagingHelper.RegisteredMessage,
+                async (x) => await UserRegistered(x));
         }
 
         private async Task UpdateSearchItem(JobsSearchItem newSearchItem)
         {
             CurrentSearchItem = newSearchItem;
             await ExecuteLoadItemsCommand();
+        }
+
+        private async Task UserRegistered(User newUser)
+        {
+            Title = string.Format("Hello, {0}", newUser.Nickname);
+            await UpdateSearchItem(new JobsSearchItem(newUser));
         }
 
         async Task ExecuteLoadItemsCommand()

@@ -32,6 +32,8 @@
             <Label Text="{Binding Item.Description}" TextType="Html" d:Text="Item description" FontSize="Small" Margin="0, 10" TextColor="{StaticResource MelonBackgroundColorText}"/>
             <Label Text="How to apply: " d:Text="Item description" FontSize="Small" TextColor="{StaticResource MelonBackgroundColorText}"/>
             <Label Text="{Binding Item.HowToApply}" TextType="Html" d:Text="Item description" FontSize="Small" TextColor="{StaticResource MelonBackgroundColorText}"/>
+            <Button Text="Apply with Jobi" HorizontalOptions="FillAndExpand" 
+                    BackgroundColor="{StaticResource ButtonsBackground}" TextColor="White" Clicked="ApplyButton_Clicked"/>
             <Label TextColor="{StaticResource MelonBackgroundColorText}">
                 <Label.FormattedText>
                     <FormattedString>

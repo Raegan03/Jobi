@@ -7,13 +7,13 @@ namespace Jobi
 {
     public partial class App : Application
     {
-        public static ApiHelper ApiHelper;
+        public static ApiService ApiHelper;
         public static UserDataStore UserDataStore;
         public static JobsDataStore JobsDataStore;
 
         public App()
         {
-            ApiHelper = new ApiHelper();
+            ApiHelper = new ApiService();
             UserDataStore = new UserDataStore();
             JobsDataStore = new JobsDataStore();
 
