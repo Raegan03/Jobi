@@ -6,47 +6,32 @@
              mc:Ignorable="d"
              x:Class="Jobi.Views.AboutPage"
              xmlns:vm="clr-namespace:Jobi.ViewModels"
-             Title="{Binding Title}">
-    
+             Title="{Binding Title}"
+             BackgroundColor="{StaticResource MelonBackgroundColor}">
+
     <ContentPage.BindingContext>
         <vm:AboutViewModel />
     </ContentPage.BindingContext>
-    
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Color x:Key="Primary">#2196F3</Color>
-            <Color x:Key="Accent">#96d1ff</Color>
-            <Color x:Key="LightTextColor">#999999</Color>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <!--<StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
-                    <Image Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="64" />
-                </ContentView>
-            </StackLayout>
-        </StackLayout>-->
         <ScrollView Grid.Row="1">
             <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10">
-                <Label FontSize="22">
+                <Label FontSize="22" TextColor="{StaticResource MelonBackgroundColorText}">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
                                 <Span Text="Jobi" FontAttributes="Bold" FontSize="22" />
                                 <Span Text=" " />
-                                <Span Text="v0.0.1" ForegroundColor="{StaticResource LightTextColor}" />
+                                <Span Text="v0.0.1" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Label Text="This app is written to allow users to look for new job opportunities." FontSize="Medium"/>
-                <Label>
+                <Label Text="This app is written to allow users to look for new job opportunities." FontSize="Medium" TextColor="{StaticResource MelonBackgroundColorText}"/>
+                <Label TextColor="{StaticResource MelonBackgroundColorText}">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
@@ -59,7 +44,7 @@
                 </Label>
                 <Button Margin="0,10,0,0" Text="Github API"
                         Command="{Binding OpenWebCommand}"
-                        BackgroundColor="{StaticResource Primary}"
+                        BackgroundColor="{StaticResource ButtonsBackground}"
                         TextColor="White" />
             </StackLayout>
         </ScrollView>

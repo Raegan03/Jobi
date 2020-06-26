@@ -35,5 +35,11 @@ namespace Jobi.Views
             await Navigation.PopModalAsync();
             MessagingCenter.Send(JobSearchItem, "Search");
         }
+
+        private async void BackButton_Clicked(object sender, EventArgs e)
+        {
+            JobSearchItem = null;
+            await Navigation.PopModalAsync();
+        }
     }
 }

@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Jobi.Views.RegisterPage"
-             Title="Register">
+             Title="Register"
+             BackgroundColor="{StaticResource MelonBackgroundColor}">
 
     <ContentPage.Resources>
         <Style TargetType="Label" x:Key="RegisterLabel">
@@ -13,17 +14,20 @@
             <Setter Property="FontAttributes" Value="Bold"/>
             <Setter Property="HorizontalTextAlignment" Value="Center"/>
             <Setter Property="VerticalTextAlignment" Value="Center"/>
+            <Setter Property="TextColor" Value="{StaticResource MelonBackgroundColorText}"/>
         </Style>
         <Style TargetType="Label" x:Key="CheckboxLabel">
             <Setter Property="FontSize" Value="Medium"/>
             <Setter Property="HorizontalTextAlignment" Value="Start"/>
             <Setter Property="VerticalTextAlignment" Value="Center"/>
+            <Setter Property="TextColor" Value="{StaticResource MelonBackgroundColorText}"/>
         </Style>
         <Style TargetType="Entry" x:Key="RegisterEntry">
             <Setter Property="FontSize" Value="Medium"/>
             <Setter Property="VerticalOptions" Value="Center"/>
             <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
             <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="TextColor" Value="{StaticResource MelonBackgroundColorText}"/>
         </Style>
     </ContentPage.Resources>
 
@@ -72,7 +76,8 @@
 
             <Label Grid.ColumnSpan="2" Grid.Row="4" Text="or" Style="{StaticResource RegisterLabel}" />
 
-            <Button Grid.ColumnSpan="2" Grid.Row="5" Text="Use phone geolocation" HorizontalOptions="FillAndExpand"/>
+            <Button Grid.ColumnSpan="2" Grid.Row="5" Text="Use phone geolocation" HorizontalOptions="FillAndExpand" 
+                    BackgroundColor="{StaticResource ButtonsBackground}" TextColor="White"/>
         </Grid>
     </ScrollView>
     

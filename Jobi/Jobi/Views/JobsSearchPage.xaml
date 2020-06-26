@@ -4,7 +4,9 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Jobi.Views.JobsSearchPage">
+             x:Class="Jobi.Views.JobsSearchPage"
+             Title="New search"
+             BackgroundColor="{StaticResource MelonBackgroundColor}">
 
     <ContentPage.Resources>
         <Style TargetType="Label" x:Key="RegisterLabel">
@@ -12,22 +14,25 @@
             <Setter Property="FontAttributes" Value="Bold"/>
             <Setter Property="HorizontalTextAlignment" Value="Center"/>
             <Setter Property="VerticalTextAlignment" Value="Center"/>
+            <Setter Property="TextColor" Value="{StaticResource MelonBackgroundColorText}"/>
         </Style>
         <Style TargetType="Label" x:Key="CheckboxLabel">
             <Setter Property="FontSize" Value="Medium"/>
             <Setter Property="HorizontalTextAlignment" Value="Start"/>
             <Setter Property="VerticalTextAlignment" Value="Center"/>
+            <Setter Property="TextColor" Value="{StaticResource MelonBackgroundColorText}"/>
         </Style>
         <Style TargetType="Entry" x:Key="RegisterEntry">
             <Setter Property="FontSize" Value="Medium"/>
             <Setter Property="VerticalOptions" Value="Center"/>
             <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
             <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="TextColor" Value="{StaticResource MelonBackgroundColorText}"/>
         </Style>
     </ContentPage.Resources>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Search" Clicked="SearchButton_Clicked" />
+        <ToolbarItem Text="Back" Clicked="BackButton_Clicked" />
     </ContentPage.ToolbarItems>
 
     <ScrollView>
@@ -38,6 +43,8 @@
                 <RowDefinition Height="50" />
                 <RowDefinition Height="50" />
                 <RowDefinition Height="25" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
                 <RowDefinition Height="50" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -57,7 +64,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Grid.Column="0" Text="Search for full-time jobs?" Style="{StaticResource RegisterLabel}" />
-                <CheckBox Grid.Column="1" IsChecked="{Binding JobSearchItem.FullTime}" HorizontalOptions="End"/>
+                <CheckBox Grid.Column="1" IsChecked="{Binding JobSearchItem.FullTime}" HorizontalOptions="End" Color="White"/>
                 <Label Grid.Column="2" Text="Full-time" Style="{StaticResource CheckboxLabel}" />
             </Grid>
 
@@ -67,7 +74,11 @@
 
             <Label Grid.ColumnSpan="2" Grid.Row="4" Text="or" Style="{StaticResource RegisterLabel}" />
 
-            <Button Grid.ColumnSpan="2" Grid.Row="5" Text="Use phone geolocation" HorizontalOptions="FillAndExpand"/>
+            <Button Grid.ColumnSpan="2" Grid.Row="5" Text="Use phone geolocation" HorizontalOptions="FillAndExpand" 
+                    BackgroundColor="{StaticResource ButtonsBackground}" TextColor="White"/>
+
+            <Button Grid.ColumnSpan="2" Grid.Row="7" Text="Search" HorizontalOptions="FillAndExpand" 
+                    BackgroundColor="{StaticResource ButtonsBackground}" TextColor="White" Clicked="SearchButton_Clicked"/>
         </Grid>
     </ScrollView>
     

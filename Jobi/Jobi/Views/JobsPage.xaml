@@ -6,7 +6,8 @@
              mc:Ignorable="d"
              x:Class="Jobi.Views.JobsPage"
              Title="{Binding Title}"
-             x:Name="BrowseItemsPage">
+             x:Name="BrowseItemsPage"
+             BackgroundColor="{StaticResource MelonBackgroundColor}">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="New Search" Clicked="ToolbarItem_Clicked" />
@@ -17,25 +18,26 @@
                 ItemsSource="{Binding JobItems}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout Padding="10" >
+                    <StackLayout Padding="10">
                         <Label Text="{Binding Title}" 
                                 d:Text="{Binding .}"
                                 LineBreakMode="TailTruncation" 
-                                Style="{DynamicResource ListItemTextStyle}" 
+                                TextColor="{StaticResource MelonBackgroundColorText}"
                                 FontSize="16"
                                 FontAttributes="Bold"/>
                         <Label d:Text="Item descripton"
                                 LineBreakMode="TailTruncation"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                TextColor="{StaticResource MelonBackgroundColorText}"
                                 FontSize="13">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{Binding Company}" />
                                     <Span Text=" - " />
-                                    <Span Text="{Binding Type}" TextColor="ForestGreen" />
+                                    <Span Text="{Binding Type}" TextColor="DarkGreen" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
+                        <BoxView BackgroundColor="#333" HeightRequest="1" HorizontalOptions="FillAndExpand" />
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnItemSelected"></TapGestureRecognizer>
                         </StackLayout.GestureRecognizers>
